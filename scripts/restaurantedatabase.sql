@@ -1,4 +1,4 @@
-CREATE DATABASE restaurante;
+CREATE DATABASE IF NOT EXISTS restaurante;
 
 USE restaurante;
 
@@ -56,4 +56,11 @@ hora TIME NOT NULL,
 valor DECIMAL(10, 2) CHECK (valor >= 0),
 FOREIGN KEY (id_cliente) REFERENCES cliente(id),
 FOREIGN KEY (id_prato) REFERENCES prato(id)
+);
+
+CREATE TABLE usuario (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(20) NOT NULL,
+senha VARCHAR(20) NOT NULL,
+tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('Administrador', 'Gerente', 'Funcionário'))
 );
