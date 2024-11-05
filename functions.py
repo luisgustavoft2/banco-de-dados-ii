@@ -32,9 +32,9 @@ def execute_from_file_raw(engine, path: str):
 def execute_folder(engine, folder_path: str):
 
     for file_name in os.listdir(folder_path):
-        if file_name.endswith('.sql'):  # Check file extension
+        if file_name.endswith('.sql'):
             file_path = os.path.join(folder_path, file_name)
-            execute_from_file_raw(engine, file_path)  # Process the file
+            execute_from_file_raw(engine, file_path)
 
 
 
