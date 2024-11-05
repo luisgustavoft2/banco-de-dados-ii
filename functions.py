@@ -6,12 +6,9 @@ import os
 
 def execute_from_file_split(engine, path: str):
 
-    
     with open(path, 'r') as file:
         sql_script = file.read()
 
-    
-    
     with engine.connect() as connection:
 
 
@@ -20,16 +17,26 @@ def execute_from_file_split(engine, path: str):
         for statement in statements:
             connection.execute(text(statement))
 
+
+
 def execute_from_file_raw(engine, path: str):
 
-    
     with open(path, 'r') as file:
         sql_script = file.read()
 
-    
-    
     with engine.connect() as connection:
         connection.execute(text(sql_script))
+
+
+
+def execute_folder(engine, folder_path: str):
+
+    for file_name in os.listdir(folder_path):
+        if file_name.endswith('.sql'):  # Check file extension
+            file_path = os.path.join(folder_path, file_name)
+            execute_from_file_raw(engine, file_path)  # Process the file
+
+
 
 def drop_database(engine):
 
@@ -50,10 +57,9 @@ def create_database(engine):
 
     execute_from_file_split(engine, 'scripts/users.sql')
 
-
-    execute_from_file_raw(engine, 'scripts/procedures/procedure_reajuste.sql')
+    execute_folder(engine, 'scripts/procedures')
    
-    execute_from_file_raw(engine, 'scripts/triggers/trigger_ponto_por_compra.sql')
+    execute_folder(engine, 'scripts/triggers')
 
 
 
