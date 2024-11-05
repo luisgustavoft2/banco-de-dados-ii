@@ -66,7 +66,6 @@ tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('Administrador', 'Gerente', 'Funcioná
 );
 
 --triggers
-DELIMITER //
 CREATE DEFINER = 'root'@'localhost' TRIGGER ponto_por_compra
 AFTER INSERT
 ON venda
@@ -84,6 +83,4 @@ BEGIN
         SELECT CONCAT('Novos pontos adicionados ao cliente: ', pontos_na_compra) AS mensagem;
     END IF;
 END;
-//
 
-DELIMITER ;

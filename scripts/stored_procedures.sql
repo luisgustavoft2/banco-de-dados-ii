@@ -1,4 +1,3 @@
-DELIMITER // 
 
 CREATE PROCEDURE reajuste(pct_increase DECIMAL(5, 2)) --using reajuste as professor asked for it in portuguese
 BEGIN
@@ -9,11 +8,7 @@ BEGIN
     ELSE
         SELECT 'Porcentagem negativas não são aceitas. Insira um valor positivo.' AS message;
     END IF;
-END //
-
-DELIMITER ;
-
-DELIMITER //
+END ;
 
 CREATE PROCEDURE sorteio ()
 BEGIN
@@ -31,11 +26,7 @@ BEGIN
 
     SELECT CONCAT('Client ID ', selected_client_id, ' has been awarded 100 points.') AS message;
 
-END //
-
-DELIMITER ;
-
-DELIMITER //
+END;
 
 CREATE PROCEDURE estatisticas()
 BEGIN
@@ -108,11 +99,7 @@ BEGIN
     ORDER BY total_sold ASC
     LIMIT 1;
 
-END //
-
-DELIMITER ;
-
-DELIMITER //
+END;
 
 CREATE PROCEDURE gastar_pontos (IN cliente_id INT, IN prato_id INT)
 BEGIN
@@ -147,9 +134,6 @@ BEGIN
         SELECT 'Pontos insuficientes para a compra.' AS mensagem, pontos_cliente AS pontos_disponiveis;
     END IF;
 END;
-//
-
-DELIMITER ;
 
 
 

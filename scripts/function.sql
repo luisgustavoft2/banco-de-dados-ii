@@ -1,4 +1,3 @@
-DELIMITER // --establishes the delimiter as // for multiline function purposes
 
 CREATE FUNCTION calculate_points(purchase_amount DECIMAL(10, 2)) --receives decimal value of the purchase
 RETURNS INT --returns an int
@@ -12,6 +11,4 @@ BEGIN
     END IF;
 
     RETURN points;
-END //
-
-DELIMITER ; --turns delimiter back to ';'
+END ;
