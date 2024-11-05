@@ -1,9 +1,10 @@
 
 from sqlalchemy import create_engine, text, URL
+import os
 
 
 
-def execute_from_file(engine, path: str):
+def execute_from_file_split(engine, path: str):
 
     
     with open(path, 'r') as file:
@@ -19,6 +20,17 @@ def execute_from_file(engine, path: str):
         for statement in statements:
             connection.execute(text(statement))
 
+def execute_from_file_raw(engine, path: str):
+
+    
+    with open(path, 'r') as file:
+        sql_script = file.read()
+
+    
+    
+    with engine.connect() as connection:
+        connection.execute(text(sql_script))
+
 def drop_database(engine):
 
     with engine.connect() as connection:
@@ -32,17 +44,17 @@ def drop_database(engine):
 
 def create_database(engine):
      
-    execute_from_file(engine, 'scripts/restaurantedatabase.sql')
+    execute_from_file_split(engine, 'scripts/restaurantedatabase.sql')
 
-    execute_from_file(engine, 'scripts/insertions.sql')
+    execute_from_file_split(engine, 'scripts/insertions.sql')
 
-    execute_from_file(engine, 'scripts/users.sql')
+    execute_from_file_split(engine, 'scripts/users.sql')
 
-    with open('scripts/trigger_ponto_por_compra.sql', 'r') as file:
-        trigger_sql = file.read()
-    
-    with engine.connect() as connection:
-        connection.execute(text(trigger_sql))
+
+    execute_from_file_raw(engine, 'scripts/procedures/procedure_reajuste.sql')
+   
+    execute_from_file_raw(engine, 'scripts/triggers/trigger_ponto_por_compra.sql')
+
 
 
 
