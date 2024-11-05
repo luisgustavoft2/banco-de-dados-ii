@@ -9,7 +9,7 @@ BEGIN
     WHERE id = NEW.id_prato;
 
     IF disponibilidade_prato = FALSE THEN
-        SIGNAL SQLSTATE '45000' --stop the transaction from happening
+        SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Seu pedido foi cancelado pois o prato está indisponível';
     END IF;
 END;

@@ -1,5 +1,5 @@
 CREATE DEFINER = 'root'@'localhost' TRIGGER validade_vencida
-AFTER INSERT ON ingredientes --using after insert as I want to check the due date when new items get inserted
+AFTER INSERT ON ingrediente
 FOR EACH ROW
 BEGIN
     IF NEW.data_validade < CURDATE() THEN
@@ -11,7 +11,5 @@ BEGIN
             WHERE u.id_ingrediente = NEW.id
         );
 
-        
-        SELECT CONCAT('Pratos que utilizam o ingrediente ', NEW.nome, ' foram marcados como indisponíveis.') AS mensagem;
     END IF;
 END;
