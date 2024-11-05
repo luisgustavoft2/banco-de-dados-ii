@@ -2,6 +2,9 @@ from sqlalchemy import create_engine, text, URL
 from sqlalchemy.exc import SQLAlchemyError
 from functions import drop_database, create_database
 
+#checar se banco existe com root engine, inicializar o banco caso não exista
+#sistema possuirá funcionalidades descritas no requerimento de projeto
+#demais funcionalidades serão criadas para demonstração dos requisitos
 
 url_object = URL.create(
     "mysql+mysqlconnector",
@@ -11,19 +14,19 @@ url_object = URL.create(
 )
 engine = create_engine(url_object)
 
-#inicialização do banco
+
+
+drop_database(engine)
 
 try:
     create_database(engine)
+    print()
 
 except SQLAlchemyError as e:
-    print("banco de dados já existe")
+    print("erro:", e)
 
 else:
     print("database created")
 
-
-#menu com opções
-#chamadas de função para apresentar requisitos
 
 print("REACHED EOF")

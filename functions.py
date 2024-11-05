@@ -25,6 +25,10 @@ def drop_database(engine):
 
             connection.execute(text("drop database restaurante"))
 
+            connection.execute(text("DROP USER IF EXISTS 'admin'@'localhost'"))
+            connection.execute(text("DROP USER IF EXISTS 'gerente'@'localhost';"))
+            connection.execute(text("DROP USER IF EXISTS 'funcionario'@'localhost';"))
+
 
 def create_database(engine):
      
@@ -33,6 +37,12 @@ def create_database(engine):
     execute_from_file(engine, 'scripts/insertions.sql')
 
     execute_from_file(engine, 'scripts/users.sql')
+
+    with open('scripts/trigger_ponto_por_compra.sql', 'r') as file:
+        trigger_sql = file.read()
+    
+    with engine.connect() as connection:
+        connection.execute(text(trigger_sql))
 
 
 
