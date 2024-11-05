@@ -2,13 +2,14 @@
 from sqlalchemy import create_engine, text, URL
 
 
-def execute_from_file(url: str, path: str):
+
+def execute_from_file(engine, path: str):
 
     
     with open(path, 'r') as file:
         sql_script = file.read()
 
-    engine = create_engine(url)
+    
     
     with engine.connect() as connection:
 
@@ -17,3 +18,22 @@ def execute_from_file(url: str, path: str):
 
         for statement in statements:
             connection.execute(text(statement))
+
+def drop_database(engine):
+
+    with engine.connect() as connection:
+
+            connection.execute(text("drop database restaurante"))
+
+
+def create_database(engine):
+     
+    execute_from_file(engine, 'scripts/restaurantedatabase.sql')
+
+    execute_from_file(engine, 'scripts/insertions.sql')
+
+    execute_from_file(engine, 'scripts/users.sql')
+
+
+
+    

@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text, URL
 from sqlalchemy.exc import SQLAlchemyError
-from functions import execute_from_file
+from functions import drop_database, create_database
 
 
 url_object = URL.create(
@@ -9,27 +9,21 @@ url_object = URL.create(
     password="Usuario123",
     host="localhost"
 )
+engine = create_engine(url_object)
 
-
-#inicialização do banco (usar try caso já tenha sido inicializado)
-#menu com opções
-#chamadas de função para cada opção
-
-
-#try:
-    #with engine.connect() as connection:
-
-     #   connection.execute(text("drop database restaurante"))
-
-#except SQLAlchemyError as e:
-    #print("ERROR:" , e)
-
-
+#inicialização do banco
 
 try:
-    execute_from_file(url_object, 'scripts/restaurantedatabase.sql')
+    create_database(engine)
+
 except SQLAlchemyError as e:
-    print("ERROR: ", e)
+    print("banco de dados já existe")
+
+else:
+    print("database created")
+
+
+#menu com opções
+#chamadas de função para apresentar requisitos
 
 print("REACHED EOF")
-
