@@ -49,6 +49,7 @@ def drop_database(engine):
             connection.execute(text("DROP USER IF EXISTS 'funcionario'@'localhost';"))
 
 
+
 def create_database(engine):
      
     execute_from_file_split(engine, 'scripts/restaurantedatabase.sql')
@@ -61,7 +62,4 @@ def create_database(engine):
    
     execute_folder(engine, 'scripts/triggers')
 
-
-
-
-    
+    execute_folder(engine, 'scripts/functions')

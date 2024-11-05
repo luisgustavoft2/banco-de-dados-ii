@@ -7,7 +7,7 @@ BEGIN
     IF purchase_amount >= 10 THEN
         SET points = FLOOR(purchase_amount / 10); 
     ELSE
-        SELECT 'Essa compra não gera pontos por estar abaixo de 10 reais' AS message;
+        SET points = 0;
     END IF;
 
     RETURN points;
