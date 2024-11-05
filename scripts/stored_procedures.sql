@@ -30,8 +30,38 @@ BEGIN
     WHERE id = selected_client_id;
 
     SELECT CONCAT('Client ID ', selected_client_id, ' has been awarded 100 points.') AS message;
-    
+
 END //
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE estatisticas()
+BEGIN
+
+    SELECT v.id_prato, p.nome, SUM(quantidade) AS total_sold, SUM(v.quantidade * p.valor) AS total_price
+    FROM venda v
+    JOIN prato p ON v.id_prato = p.id
+    GROUP BY v.id_prato, p.nome
+    ORDER BY total_sold DESC
+    LIMIT 1;
+
+    SELECT v.id_prato, p.nome, SUM(quantidade) AS total_sold, SUM(v.quantidade * p.valor) AS total_price
+    FROM venda v
+    JOIN prato p ON v.id_prato = p.id
+    GROUP BY v.id_prato, p.nome
+    ORDER BY total_sold ASC
+    LIMIT 1;
+
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE gastar_pontos ()
+
+
+
 
