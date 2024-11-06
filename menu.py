@@ -56,4 +56,4 @@ def run_menu(engine):
         if choice is not None:
             running = handle_option(choice, engine)
 
-# run_menu(engine) para executar
+run_menu(engine)
