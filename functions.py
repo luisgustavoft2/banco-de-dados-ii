@@ -4,18 +4,6 @@ from sqlalchemy.exc import SQLAlchemyError
 import os
 
 
-def database_exists(engine):
-    try:
-        with engine.connect():
-            pass
-        return True
-    except SQLAlchemyError:
-
-        return False
-
-
-
-
 
 def execute_from_file_split(engine, path: str):
 
@@ -79,3 +67,5 @@ def create_database(engine):
     execute_folder(engine, 'scripts/triggers')
 
     execute_folder(engine, 'scripts/functions')
+
+    execute_folder(engine, 'scripts/views')
