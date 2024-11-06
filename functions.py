@@ -4,6 +4,10 @@ import os
 
 
 
+
+
+
+
 def execute_from_file_split(engine, path: str):
 
     with open(path, 'r') as file:
@@ -16,6 +20,8 @@ def execute_from_file_split(engine, path: str):
 
         for statement in statements:
             connection.execute(text(statement))
+            connection.commit()
+            
 
 
 
@@ -26,6 +32,7 @@ def execute_from_file_raw(engine, path: str):
 
     with engine.connect() as connection:
         connection.execute(text(sql_script))
+        connection.commit()
 
 
 
