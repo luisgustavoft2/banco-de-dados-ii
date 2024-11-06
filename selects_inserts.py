@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, URL
 
 
 def insert_cliente(engine, nome, sexo, idade, nascimento, pontos):
