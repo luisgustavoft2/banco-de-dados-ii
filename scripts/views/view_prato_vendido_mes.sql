@@ -8,8 +8,8 @@ FROM
 JOIN 
     prato p ON v.id_prato = p.id
 WHERE 
-    MONTH(v.dia) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
-    AND YEAR(v.dia) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+    MONTH(v.dia) >= MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+    AND YEAR(v.dia) >= YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 GROUP BY 
     p.id, p.nome
 ORDER BY 

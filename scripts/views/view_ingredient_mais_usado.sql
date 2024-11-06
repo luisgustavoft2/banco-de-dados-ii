@@ -10,8 +10,8 @@ JOIN
 JOIN 
     ingrediente i ON u.id_ingrediente = i.id
 WHERE 
-    MONTH(v.dia) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
-    AND YEAR(v.dia) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+    MONTH(v.dia) >= MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+    AND YEAR(v.dia) >= YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
 GROUP BY 
     i.id, i.nome
 ORDER BY 
