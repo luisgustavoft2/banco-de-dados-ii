@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, text, URL
 from sqlalchemy.exc import SQLAlchemyError
-from functions import drop_database, create_database
+from functions import drop_database, create_database, insert_cliente
+from selects_inserts import *
 
 #checar se banco existe com root engine, inicializar o banco caso não exista
 #sistema possuirá funcionalidades descritas no requerimento de projeto
@@ -28,5 +29,9 @@ except SQLAlchemyError as e:
 else:
     print("database created")
 
+insert_cliente(engine, "Breno", "m", "31", "1993-07-09", "0")
+
+rows = select_venda(engine)
+print(rows)
 
 print("REACHED EOF")
