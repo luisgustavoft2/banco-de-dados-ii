@@ -59,11 +59,11 @@ def drop_database(engine):
 
 def create_database(engine):
      
-    execute_from_file_split(engine, 'scripts/restaurantedatabase.sql')
+    execute_from_file_split(engine, 'scripts/structure/restaurantedatabase.sql')
 
-    execute_from_file_split(engine, 'scripts/insertions.sql')
+    execute_from_file_split(engine, 'scripts/structure/insertions.sql')
 
-    execute_from_file_split(engine, 'scripts/users.sql')
+    execute_from_file_split(engine, 'scripts/structure/users.sql')
 
     execute_folder(engine, 'scripts/procedures')
    
