@@ -8,7 +8,7 @@ FROM
 JOIN 
     usos u ON v.id_prato = u.id_prato
 JOIN 
-    ingredientes i ON u.id_ingrediente = i.id
+    ingrediente i ON u.id_ingrediente = i.id
 WHERE 
     MONTH(v.dia) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
     AND YEAR(v.dia) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
