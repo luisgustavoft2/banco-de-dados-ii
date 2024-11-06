@@ -43,7 +43,7 @@ INSERT INTO ingrediente (nome, data_fabricacao, data_validade, quantidade, obser
 ('Alface', '2024-10-03', '2024-10-10', 200, 'Alface fresca'),
 ('Cebola', '2024-10-07', '2024-11-07', 150, 'Cebola roxa'),
 ('Frango', '2024-10-10', '2024-10-15', 80, 'Peito de frango'),
-('Arroz', '2024-10-01', '2025-01-01', 500, 'Arroz branco'),
+('Arroz', '2024-10-01', '2025-01-01', 0, 'Arroz branco'),
 ('Farinha', '2024-09-20', '2025-09-20', 1000, 'Farinha de trigo'),
 ('Azeite', '2024-10-12', '2026-10-12', 100, 'Azeite extra virgem');
 
@@ -57,7 +57,7 @@ INSERT INTO usos (id_prato, id_ingrediente) VALUES
 (5, 3),  -- Espaguete usa Carne Moída
 (6, 1),  -- Salada Caesar usa Tomate
 (7, 6),  -- Tacos usa Cebola
-(8, 7);  -- Risoto usa Frango
+(8, 8);  -- Risoto usa Arroz
 
 -- Inserindo registros pré-cadastrados em venda
 INSERT INTO venda (id_cliente, id_prato, quantidade, dia, hora, valor) VALUES
