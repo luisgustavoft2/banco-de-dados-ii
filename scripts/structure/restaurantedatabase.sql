@@ -62,5 +62,5 @@ CREATE TABLE usuario (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(20) NOT NULL,
 senha VARCHAR(20) NOT NULL,
-tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('Administrador', 'Gerente', 'Funcionário'))
+tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('Administrador', 'Gerente', 'Funcionario'))
 );

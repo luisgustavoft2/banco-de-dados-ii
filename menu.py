@@ -7,15 +7,15 @@ def main_menu():
     print("3. Inserir Dados em Cliente")
     print("4. Consultar Vendas")
     print("5. Listar Procedimentos")
-    print("6. Listar Funções")
+    print("6. Listar Funcoes")
     print("7. Listar Triggers")
     print("8. Sair")
     
     try:
-        choice = int(input("\nSelecione uma opção: "))
+        choice = int(input("\nSelecione uma opcoo: "))
         return choice
     except ValueError:
-        print("Entrada inválida. Insira um número correspondente à opção.")
+        print("Entrada invalida. Insira um número correspondente a opcao.")
         return None
 
 def handle_option(choice, engine):
@@ -24,7 +24,7 @@ def handle_option(choice, engine):
         print("Banco de dados criado.")
     elif choice == 2:
         drop_database(engine)
-        print("Banco de dados destruído.")
+        print("Banco de dados destruido.")
     elif choice == 3:
         nome = input("Nome do cliente: ")
         sexo = input("Sexo (m/f/o): ")
@@ -37,16 +37,16 @@ def handle_option(choice, engine):
         vendas = select_venda(engine)
         print("Vendas:", vendas)
     elif choice == 5:
-        print("Procedimentos disponíveis: reajuste, sorteio, estatisticas, gastar_pontos")
+        print("Procedimentos disponiveis: reajuste, sorteio, estatisticas, gastar_pontos")
     elif choice == 6:
-        print("Funções disponíveis: cálculo de pontos")
+        print("Funcoes disponiveis: calculo de pontos")
     elif choice == 7:
-        print("Triggers implementados: cálculo de pontos por gasto, expiração de ingredientes, disponibilidade de pratos e atualização de estoque")
+        print("Triggers implementados: calculo de pontos por gasto, expiracao de ingredientes, disponibilidade de pratos e atualizacao de estoque")
     elif choice == 8:
         print("Saindo do sistema...")
         return False
     else:
-        print("Opção inválida. Tente novamente.")
+        print("Opcao invalida. Tente novamente.")
     return True
 
 def run_menu(engine):

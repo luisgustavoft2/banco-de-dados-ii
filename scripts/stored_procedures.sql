@@ -6,7 +6,7 @@ BEGIN
         UPDATE prato --using prato because the professor asked for the table names in portuguese 
         SET valor = valor * (1 + (pct_increase / 100));
     ELSE
-        SELECT 'Porcentagem negativas não são aceitas. Insira um valor positivo.' AS message;
+        SELECT 'Porcentagem negativas nao sao aceitas. Insira um valor positivo.' AS message;
     END IF;
 END ;
 

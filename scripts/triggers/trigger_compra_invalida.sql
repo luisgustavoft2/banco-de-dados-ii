@@ -10,6 +10,6 @@ BEGIN
 
     IF disponibilidade_prato = FALSE THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Seu pedido foi cancelado pois o prato está indisponível';
+        SET MESSAGE_TEXT = 'Seu pedido foi cancelado pois o prato esta indisponivel';
     END IF;
 END;

@@ -5,6 +5,6 @@ BEGIN
         UPDATE prato
         SET valor = valor * (1 + (pct_increase / 100));
     ELSE
-        SELECT 'Porcentagem negativas não são aceitas. Insira um valor positivo.' AS message;
+        SELECT 'Porcentagem negativas nao sao aceitas. Insira um valor positivo.' AS message;
     END IF;
 END ;
