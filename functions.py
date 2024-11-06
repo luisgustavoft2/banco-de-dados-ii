@@ -1,8 +1,17 @@
 
 from sqlalchemy import create_engine, text, URL
+from sqlalchemy.exc import SQLAlchemyError
 import os
 
 
+def database_exists(engine):
+    try:
+        with engine.connect():
+            pass
+        return True
+    except SQLAlchemyError:
+
+        return False
 
 
 
