@@ -5,7 +5,7 @@ BEGIN
 
     SELECT id INTO selected_client_id
     FROM cliente
-    ORDER BY RAND() --selects one random id from cliente table to award points
+    ORDER BY RAND()
     LIMIT 1;
 
     UPDATE cliente

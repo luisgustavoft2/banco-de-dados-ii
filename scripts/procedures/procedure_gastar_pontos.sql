@@ -5,22 +5,22 @@ BEGIN
     DECLARE pontos_necessarios INT;
     DECLARE nova_pontuacao INT;
 
-    -- set price for the dish
+    
     SELECT valor INTO preco_prato
     FROM prato
     WHERE id = prato_id;
 
-    -- get how many points client has
+    
     SELECT pontos INTO pontos_cliente
     FROM cliente
     WHERE id = cliente_id;
 
-    -- calculate how many points needes for the price of the dish
+    
     SET pontos_necessarios = CEIL(preco_prato);
 
-    -- does client have enough points for dishes
+    
     IF pontos_cliente >= pontos_necessarios THEN
-        -- setting new client points
+        
         SET nova_pontuacao = pontos_cliente - pontos_necessarios;
         UPDATE cliente
         SET pontos = nova_pontuacao
