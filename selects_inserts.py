@@ -1,5 +1,20 @@
 from sqlalchemy import create_engine, text, URL
 
+def select_view_ingrediente_mais_usado(engine):
+
+    with engine.connect() as connection:
+            query = text("SELECT * FROM ingrediente_mais_usado_ultimo_mes")
+            result = connection.execute(query)
+            rows = result.fetchall()
+            return rows
+    
+def select_view_prato_mais_vendido_mensalmente(engine):
+
+    with engine.connect() as connection:
+            query = text("SELECT * FROM pratos_mais_vendidos_por_mes")
+            result = connection.execute(query)
+            rows = result.fetchall()
+            return rows
 
 def insert_cliente(engine, nome, sexo, idade, nascimento, pontos):
 
@@ -56,7 +71,7 @@ def select_fornecedor(engine):
     
 def insert_ingrediente(engine, nome, data_fabricacao, data_validade, quantidade, observacao):
 
-    query = text("INSERT INTO ingredientes (nome, data_fabricacao, data_validade, quantidade, observacao) VALUES (:nome, :data_fabricacao, :data_validade, :quantidade, :observacao)")
+    query = text("INSERT INTO ingrediente (nome, data_fabricacao, data_validade, quantidade, observacao) VALUES (:nome, :data_fabricacao, :data_validade, :quantidade, :observacao)")
     params = {"nome": nome, "data_fabricacao": data_fabricacao, "data_validade": data_validade, "quantidade": quantidade, "observacao": observacao}
 
     with engine.connect() as connection:
