@@ -24,7 +24,7 @@ BEGIN
     SET pontos = pontos + 100
     WHERE id = selected_client_id;
 
-    SELECT CONCAT('Client ID ', selected_client_id, ' has been awarded 100 points.') AS message;
+    SELECT CONCAT('Client ID ', selected_client_id, ' foi premiado(a) com 100 pontos!') AS message;
 
 END;
 
