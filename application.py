@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text, URL
 from sqlalchemy.exc import SQLAlchemyError
-from functions import drop_database, create_database, insert_cliente
+from functions import drop_database, create_database
 from selects_inserts import *
 
 #checar se banco existe com root engine, inicializar o banco caso não exista
